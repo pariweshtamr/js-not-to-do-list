@@ -1,0 +1,67 @@
+body {
+  font-size: 2rem;
+  color: #fff;
+  background: linear-gradient(to right, blue, red);
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.task-list h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.not-to-do h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* main */
+.main {
+  width: 80%;
+  margin: auto;
+}
+
+li {
+  list-style: none;
+  margin: 2rem;
+}
+
+[type="checkbox"] {
+  zoom: 2;
+}
+
+/*add new task form */
+.form {
+  text-align: center;
+}
+
+.form input {
+  line-height: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* task sections */
+.task-sections,
+.items {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/* task list section */
+
+/* not-to-do */
+.not-to-do,
+.task-list {
+  min-width: 50%;
+}
+
+hr {
+  margin: 2rem;
+}
