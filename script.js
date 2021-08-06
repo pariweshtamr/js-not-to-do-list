@@ -6,12 +6,16 @@ const handleOnSubmit = e => {
 
     const formData = new FormData(e);
     const task = formData.get("task");
-    // const hr = formData.get("hr");
+    const hr = formData.get("hr");
 
+    const newTask = {
+        task,
+        hr
+    }
 
     // push list in the global array
-    taskList.push(task);
-
+    taskList.push(newTask);
+    console.log(taskList);
    displayTaskList();
 }
 
@@ -27,10 +31,10 @@ const displayTaskList = () => {
         <div class="items">
           <span class="item"
             ><input type="checkbox" /><label for=""
-              >${item}</label
+              >${item.task}</label
             ></span
           >
-          <span class="hrs"></span>
+          <span class="hrs">${item.hr}hrs/w</span>
           <button onclick ="markAsNotToDoTask(${i})">Mark Not To Do</button>
           <button onclick ="deleteItem(${i})">DELETE</button>
         </div>
@@ -48,7 +52,7 @@ const markAsNotToDoTask = (i) => {
     console.log(taskList[i]);
 
     // 2. remove that item from the array and put in the variable
-    const item = taskList.splice(i, 1);
+    const item = taskList.splice(i, 1)[0];
     badTaskList.push(item);
 
     displayTaskList();
@@ -77,10 +81,10 @@ const displayBadTaskList = () => {
         <div class="items">
           <span class="item"
             ><input type="checkbox" /><label for=""
-              >${item}</label
+              >${item.task}</label
             ></span
           >
-          <span class="hrs"></span>
+          <span class="hrs">${item.hr}hrs/w</span>
           <button onclick ="markAsToDoTask(${i})">Mark as To Do</button>
         </div>
       </li>
@@ -102,7 +106,7 @@ const displayBadTaskList = () => {
 
 const markAsToDoTask = (i) => {
 
-    const item = badTaskList.splice(i,1);
+    const item = badTaskList.splice(i,1)[0];
     taskList.push(item);
 
     displayBadTaskList();
