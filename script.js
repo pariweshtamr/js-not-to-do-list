@@ -1,23 +1,39 @@
 
 const taskList = [];
 const badTaskList = [];
+const hrsWeek = 168;
+
+
+let taskListHrs = 0;
+let badTaskListHrs = 0;
 
 const handleOnSubmit = e => {
 
     const formData = new FormData(e);
     const task = formData.get("task");
-    const hr = formData.get("hr");
+    const hr = +formData.get("hr");
 
     const newTask = {
         task,
         hr
     }
 
+    taskListHrs = taskList.reduce((subttl, item)=> (subttl += +item.hr), 0);
+
+    if (taskListHrs + hr > hrsWeek) {
+        return alert("You have exceeded the number of hours per week");
+    };
+    
+
+    document.getElementById("totalHrs").innerText = taskListHrs + hr;
+
     // push list in the global array
     taskList.push(newTask);
     console.log(taskList);
    displayTaskList();
-}
+
+
+};
 
 //displaying the task lists
 const displayTaskList = () => {
@@ -59,11 +75,6 @@ const markAsNotToDoTask = (i) => {
     displayBadTaskList();
 };
 
-//Delete item
-const deleteItem = i => {
-    taskList.splice(i,1);
-    displayTaskList();
-};
 
 // 3. we need to have the variable to store in not to do items
 //displaying badtasklists
@@ -92,14 +103,9 @@ const displayBadTaskList = () => {
     });
 
     document.getElementById("bad-task-list").innerHTML = tasks;
+    totalBadHrs();
 
 };
-
-
-
-
-
-
 
 
 // Reverse (from not to do list to task list)
@@ -111,6 +117,28 @@ const markAsToDoTask = (i) => {
 
     displayBadTaskList();
     displayTaskList();
+};
+
+
+//Delete item
+const deleteItem = i => {
+    taskList.splice(i,1);
+    displayTaskList();
+    totalHrs();
+};
+
+//calculate bad hours
+const totalBadHrs = () => {
+    const total = badTaskList.reduce((subttl, item)=> (subttl += item.hr), 0);
+
+    document.getElementById("totalBadHrs").innerText = total;
+};
+
+//update hrs after deleting
+const totalHrs = () => {
+    const total = taskList.reduce((subttl, item)=> (subttl += item.hr), 0);
+
+    document.getElementById("totalHrs").innerText = total;
 };
 
 
