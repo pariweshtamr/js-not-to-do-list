@@ -22,7 +22,7 @@ h1 {
 
 /* main */
 .main {
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 
@@ -41,7 +41,7 @@ li {
 }
 
 .form input {
-  line-height: 1rem;
+  line-height: 1.5;
   padding: 1rem;
   border-radius: 5px;
 }
@@ -64,4 +64,22 @@ li {
 
 hr {
   margin: 2rem;
+}
+
+button {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: 20px;
+  margin-right: 1rem;
+  padding: 10px 10x 10px 10px;
+}
+label {
+  font-size: 24px;
+  padding: 5px;
+}
+.hrs {
+  font-size: 24px;
+  padding: 5px;
 }
